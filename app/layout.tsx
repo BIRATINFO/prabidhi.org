@@ -17,9 +17,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "SUNSARITIMES | Digital Archive of Information",
+  title: "PRABIDHI.ORG | Adapting Technology",
   description: "Digital Archive of Information",
-  metadataBase: new URL('https://sunsaritimes.com'),
+  metadataBase: new URL('https://prabidhi.org'),
 };
 
 

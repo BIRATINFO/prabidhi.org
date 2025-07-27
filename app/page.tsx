@@ -25,7 +25,7 @@ export default async function Page() {
 
   try {
     // Fetch hero post
-    const heroRes = await fetch(`${backend_uri}/api/posts/featured-news/sunsaritimes.com`, options)
+    const heroRes = await fetch(`${backend_uri}/api/posts/featured-news/prabidhi.org`, options)
     if (!heroRes.ok) {
       throw new Error('Banner or hero fetch failed')
     }
@@ -34,7 +34,7 @@ export default async function Page() {
 
 
     // Fetch category data 
-    const res = await fetch(`${backend_uri}/api/posts/homepage/sunsaritimes.com`, options)
+    const res = await fetch(`${backend_uri}/api/posts/homepage/prabidhi.org`, options)
     if (!res.ok) throw new Error(`Failed to fetch homepage news`)
 
     const response = await res.json()
