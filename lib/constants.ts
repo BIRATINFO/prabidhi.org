@@ -27,5 +27,5 @@ export const FEATURED_SITES = [
     { en: 'sunsaritimes.com', np: 'सुनसरीटाइम्स.कम' },
     { en: 'birtacity.com', np: 'बिर्तामोड.कम' },
     { en: 'karmashil.com', np: 'कर्मशील.कम' },
-    { en: 'prabidhi.org', np: 'प्रविधि.अर्ग ' },
+    { en: 'prabidhi.org', np: 'प्रविधि.अर्ग' },
 ];
