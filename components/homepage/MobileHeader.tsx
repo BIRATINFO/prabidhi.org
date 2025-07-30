@@ -50,7 +50,7 @@ export default function MobileHeader({
                     </div>
                     <div className='relative h-10 w-[120px]'>
                         <Image
-                            src='/prabidhi.svg'
+                            src='/PRABIDHI.svg'
                             alt='PRABIDHI Text Logo'
                             fill
                             className='object-contain'
