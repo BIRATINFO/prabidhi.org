@@ -39,7 +39,7 @@ export default async function Page() {
   return (
     <div>
       {/* Show roadblock banner immediately if exists */}
-      {activeBanner && <RoadblockBanner data={activeBanner} />}
+      {activeBanner && <RoadblockBanner data={activeBanner} pageType={'home'} />}
 
       <Header />
       <Hero data={heroData} />

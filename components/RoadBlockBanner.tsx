@@ -27,10 +27,11 @@ interface RoadblockBannerProps {
         }
         priority?: number
     } | null
+    pageType?: 'home' | 'article'
 }
 
-const RoadblockBanner: React.FC<RoadblockBannerProps> = ({ data }) => {
-    const [isVisible, setIsVisible] = useState(true)
+const RoadblockBanner: React.FC<RoadblockBannerProps> = ({ data, pageType = 'home' }) => {
+    const [isVisible, setIsVisible] = useState(false)
     const [showCloseButton, setShowCloseButton] = useState(false)
     const [countdown, setCountdown] = useState<number | null>(null)
     const [countdownKey, setCountdownKey] = useState(0)
@@ -40,6 +41,21 @@ const RoadblockBanner: React.FC<RoadblockBannerProps> = ({ data }) => {
             setIsVisible(false)
             return
         }
+
+        // Create a unique session key for each page type and banner
+        const hasShownKey = `banner_shown_${data._doc._id}_${pageType}`
+
+        // Check if banner has already been shown in this tab session for this page type
+        const hasShown = sessionStorage.getItem(hasShownKey)
+
+        if (hasShown) {
+            setIsVisible(false)
+            return
+        }
+
+        // Mark as shown in this session for this page type
+        sessionStorage.setItem(hasShownKey, 'true')
+        setIsVisible(true)
 
         const delay = data._doc.closeButtonDelay
         setCountdown(delay)
@@ -66,13 +82,10 @@ const RoadblockBanner: React.FC<RoadblockBannerProps> = ({ data }) => {
             clearInterval(countdownInterval)
             clearTimeout(dismissTimer)
         }
-    }, [data])
+    }, [data, pageType])
 
     const handleClose = () => {
         setIsVisible(false)
-        if (data?._doc._id) {
-            document.cookie = `banner_dismissed_${data._doc._id}=${new Date().toISOString()}; path=/; max-age=${60 * 60 * 24}`
-        }
     }
 
     if (!data || !isVisible) return null
